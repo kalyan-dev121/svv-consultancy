@@ -553,6 +553,11 @@ button {
   box-shadow:0 4px 12px #0002;
   flex-shrink:0
 }
+.avatar-fallback {
+  display:none;
+  flex-shrink:0;
+}
+   
 .person h3 {
   font-size:15px
 }
@@ -1173,11 +1178,10 @@ button {
        Contact
       </h3>
       <span>
-       <b>
-        Santhu
-       </b>
-       — Founder & CEO
-      </span>
+      <b>
+ Santhosh Naik
+</b>
+— Founder & CEO
       <a href="tel:+918019287095">
        +91 8019287095
       </a>
@@ -1235,17 +1239,58 @@ button {
   const menu=document.getElementById("menu"),links=document.getElementById("links");
   menu.onclick=()=>links.classList.toggle("open");
   links.querySelectorAll("a").forEach(a=>a.onclick=()=>links.classList.remove("open"));
-  const people=[
-["S","Santhu","Founder & CEO",""],
-["L","Latha Katika","Vizag Branch Manager","assets/team/latha-katika.jpeg"],
-["A","Add Name","Admissions Head",""],
-["V","Add Name","Visa Documentation Head",""],
-["T","Add Name","Travel Support Head",""]
-],cards=people.map(p=>`<article class="person">${p[3]?`<img class="avatar-img" src="${p[3]}" alt="${p[1]}" loading="lazy">`:`<span class="avatar">$ {
-    p[0]
+const people = [
+  {
+    initial: "S",
+    name: "Santhosh Naik",
+    role: "Founder & CEO",
+    image: "assets/team/santhosh-naik.jpeg"
+  },
+  {
+    initial: "J",
+    name: "Jatavath Sindhu",
+    role: "Co-Founder",
+    image: "assets/team/jatavath-sindhu.jpeg"
+  },
+  {
+    initial: "L",
+    name: "Latha Katika",
+    role: "Vizag Branch Manager",
+    image: "assets/team/latha-katika.jpeg"
+  },
+  {
+    initial: "S",
+    name: "Sathish",
+    role: "Legal Advisor",
+    image: "assets/team/sathish.jpeg"
   }
-  </span>`}<div><h3>${p[1]}</h3><p>${p[2]}</p></div></article>`).join("");
-  document.getElementById("teamTrack").innerHTML=cards+cards;
+];
+
+const cards = people.map(person => `
+  <article class="person">
+    ${
+      person.image
+        ? `
+          <img
+            class="avatar-img"
+            src="${person.image}"
+            alt="${person.name} - ${person.role}"
+            loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+          >
+          <span class="avatar avatar-fallback">${person.initial}</span>
+        `
+        : `<span class="avatar">${person.initial}</span>`
+    }
+
+    <div>
+      <h3>${person.name}</h3>
+      <p>${person.role}</p>
+    </div>
+  </article>
+`).join("");
+
+document.getElementById("teamTrack").innerHTML = cards + cards;
   document.getElementById("form").onsubmit=e=> {
     e.preventDefault();
     const n=document.getElementById("name").value.trim(),m=document.getElementById("mobile").value.replace(/\D/g,""),q=document.getElementById("qualification").value,c=select.value,co=document.getElementById("course").value.trim(),i=document.getElementById("intake").value.trim(),no=document.getElementById("note").value.trim(),msg=document.getElementById("message");
