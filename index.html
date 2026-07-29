@@ -228,6 +228,81 @@ button {
 .globe:after {
   inset:65px 20px
 }
+   .flag-orbit {
+  position:absolute;
+  inset:-42px;
+  border-radius:50%;
+  animation:rotateFlags 16s linear infinite;
+}
+
+.orbit-flag {
+  position:absolute;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  border:3px solid #ffffffcc;
+  box-shadow:0 8px 22px #0005;
+  font-size:23px;
+}
+
+.flag-one {
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.flag-two {
+  top:20%;
+  right:0;
+}
+
+.flag-three {
+  right:4%;
+  bottom:16%;
+}
+
+.flag-four {
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.flag-five {
+  left:4%;
+  bottom:16%;
+}
+
+.flag-six {
+  top:20%;
+  left:0;
+}
+
+@keyframes rotateFlags {
+  from {
+    transform:rotate(0deg);
+  }
+
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+.flag-orbit .orbit-flag {
+  animation:keepFlagsStraight 16s linear infinite;
+}
+
+@keyframes keepFlagsStraight {
+  from {
+    rotate:0deg;
+  }
+
+  to {
+    rotate:-360deg;
+  }
+}
 .plane {
   position:absolute;
   right:15%;
@@ -711,6 +786,15 @@ button {
     width:230px;
     height:230px
   }
+ .flag-orbit {
+  inset:-34px;
+}
+
+.orbit-flag {
+  width:36px;
+  height:36px;
+  font-size:20px;
+}
   .passport {
     width:96px;
     height:135px;
@@ -820,12 +904,21 @@ button {
        </a>
       </div>
      </div>
-     <div aria-hidden="true" class="hero-card">
-      <div class="globe">
-      </div>
-      <span class="plane">
-       ✈
-      </span>
+    <div aria-hidden="true" class="hero-card">
+  <div class="globe">
+    <div class="flag-orbit">
+      <span class="orbit-flag flag-one">🇩🇪</span>
+      <span class="orbit-flag flag-two">🇫🇷</span>
+      <span class="orbit-flag flag-three">🇮🇹</span>
+      <span class="orbit-flag flag-four">🇷🇺</span>
+      <span class="orbit-flag flag-five">🇬🇧</span>
+      <span class="orbit-flag flag-six">🇵🇱</span>
+    </div>
+  </div>
+
+  <span class="plane">
+    ✈
+  </span>
       <div class="passport">
        ✦
        <b>
@@ -1208,7 +1301,7 @@ button {
   </div>
   <script>
    document.addEventListener("DOMContentLoaded",()=> {
-  const countries=[["Albania","🇦🇱"],["Armenia","🇦🇲"],["Austria","🇦🇹"],["Belgium","🇧🇪"],["Bulgaria","🇧🇬"],["Croatia","🇭🇷"],["Cyprus","🇨🇾"],["Czech Republic","🇨🇿"],["Denmark","🇩🇰"],["Estonia","🇪🇪"],["Finland","🇫🇮"],["France","🇫🇷"],["Georgia","🇬🇪"],["Germany","🇩🇪"],["Greece","🇬🇷"],["Hungary","🇭🇺"],["Iceland","🇮🇸"],["Ireland","🇮🇪"],["Italy","🇮🇹"],["Latvia","🇱🇻"],["Lithuania","🇱🇹"],["Malta","🇲🇹"],["Montenegro","🇲🇪"],["Netherlands","🇳🇱"],["North Macedonia","🇲🇰"],["Norway","🇳🇴"],["Poland","🇵🇱"],["Portugal","🇵🇹"],["Romania","🇷🇴"],["Serbia","🇷🇸"],["Slovakia","🇸🇰"],["Slovenia","🇸🇮"],["Spain","🇪🇸"],["Sweden","🇸🇪"],["Switzerland","🇨🇭"],["Turkey","🇹🇷"],["Ukraine","🇺🇦"],["United Kingdom","🇬🇧"]],grid=document.getElementById("countryGrid"),select=document.getElementById("country"),search=document.getElementById("countrySearch"),empty=document.getElementById("empty");
+  const countries=[["Albania","🇦🇱"],["Armenia","🇦🇲"],["Austria","🇦🇹"],["Belgium","🇧🇪"],["Bulgaria","🇧🇬"],["Croatia","🇭🇷"],["Cyprus","🇨🇾"],["Czech Republic","🇨🇿"],["Denmark","🇩🇰"],["Estonia","🇪🇪"],["Finland","🇫🇮"],["France","🇫🇷"],["Georgia","🇬🇪"],["Germany","🇩🇪"],["Greece","🇬🇷"],["Hungary","🇭🇺"],["Iceland","🇮🇸"],["Ireland","🇮🇪"],["Italy","🇮🇹"],["Latvia","🇱🇻"],["Lithuania","🇱🇹"],["Malta","🇲🇹"],["Montenegro","🇲🇪"],["Netherlands","🇳🇱"],["North Macedonia","🇲🇰"],["Norway","🇳🇴"],["Poland","🇵🇱"],["Portugal","🇵🇹"],["Romania","🇷🇴"],["Russia","🇷🇺"],["Serbia","🇷🇸"],["Slovakia","🇸🇰"],["Slovenia","🇸🇮"],["Spain","🇪🇸"],["Sweden","🇸🇪"],["Switzerland","🇨🇭"],["Turkey","🇹🇷"],["Ukraine","🇺🇦"],["United Kingdom","🇬🇧"]],grid=document.getElementById("countryGrid"),select=document.getElementById("country"),search=document.getElementById("countrySearch"),empty=document.getElementById("empty");
   countries.forEach(([n,f])=> {
     grid.insertAdjacentHTML("beforeend",`<article class="country" data-name="${n.toLowerCase()}"><div class="flag">${f}</div><h3>${n}</h3><p>Admission and visa guidance</p><button type="button" data-country="${n}">Apply Now ↗</button></article>`);
     select.insertAdjacentHTML("beforeend",`<option>${n}</option>`)
