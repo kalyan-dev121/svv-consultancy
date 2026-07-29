@@ -641,6 +641,171 @@ button {
   color:var(--m);
   margin-top:4px
 }
+   .person-clickable {
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.person-clickable:hover {
+  transform:translateY(-5px);
+  box-shadow:0 18px 40px #07132120;
+}
+
+.profile-modal {
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#030914cc;
+  backdrop-filter:blur(8px);
+}
+
+.profile-modal.open {
+  display:flex;
+}
+
+.profile-dialog {
+  position:relative;
+  width:min(100%,720px);
+  max-height:90vh;
+  overflow-y:auto;
+  border-radius:28px;
+  background:#fff;
+  box-shadow:0 35px 100px #0007;
+}
+
+.profile-close {
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:2;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#071321;
+  color:#fff;
+  font-size:22px;
+}
+
+.profile-header {
+  padding:42px 34px 30px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  color:#fff;
+  background:linear-gradient(145deg,#071321,#102a44);
+}
+
+.profile-photo {
+  width:130px;
+  height:130px;
+  flex-shrink:0;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center;
+  border:5px solid #ffffff45;
+  box-shadow:0 15px 35px #0005;
+}
+
+.profile-header h2 {
+  margin:8px 0;
+  font-size:32px;
+}
+
+.profile-header p {
+  color:#ffffffb5;
+  line-height:1.6;
+}
+
+.profile-body {
+  padding:32px 34px 38px;
+}
+
+.profile-body h3 {
+  margin:24px 0 10px;
+  color:var(--n);
+}
+
+.profile-body h3:first-child {
+  margin-top:0;
+}
+
+.profile-body p {
+  color:var(--m);
+  line-height:1.8;
+}
+
+.profile-highlights {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:24px 0;
+}
+
+.profile-highlight {
+  padding:17px 12px;
+  text-align:center;
+  border:1px solid var(--l);
+  border-radius:16px;
+  background:var(--bg);
+}
+
+.profile-highlight strong {
+  display:block;
+  color:var(--r);
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+.profile-highlight span {
+  color:var(--m);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.profile-quote {
+  margin-top:24px;
+  padding:20px;
+  border-left:4px solid var(--r);
+  border-radius:0 15px 15px 0;
+  background:#fff4f5;
+  color:var(--n);
+  font-weight:700;
+  line-height:1.7;
+}
+
+body.modal-open {
+  overflow:hidden;
+}
+
+@media(max-width:560px) {
+  .profile-header {
+    padding:54px 22px 26px;
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .profile-photo {
+    width:110px;
+    height:110px;
+  }
+
+  .profile-header h2 {
+    font-size:27px;
+  }
+
+  .profile-body {
+    padding:25px 22px 30px;
+  }
+
+  .profile-highlights {
+    grid-template-columns:1fr;
+  }
+}
 @keyframes scroll {
   to {
     transform:translateX(-50%)
@@ -676,6 +841,7 @@ button {
   padding-top:18px;
   font-size:10px
 }
+   
 .floating {
   position:fixed;
   right:16px;
@@ -1291,6 +1457,126 @@ button {
     </div>
    </div>
   </footer>
+  <div
+  class="profile-modal"
+  id="santhoshProfileModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="santhoshProfileTitle"
+>
+  <article class="profile-dialog">
+    <button
+      class="profile-close"
+      id="closeSanthoshProfile"
+      type="button"
+      aria-label="Close founder profile"
+    >
+      ×
+    </button>
+
+    <div class="profile-header">
+      <img
+        class="profile-photo"
+        src="assets/team/santhosh-naik.jpeg"
+        alt="Santhosh Naik, Founder and CEO of SVV Visa Consultancy"
+      >
+
+      <div>
+        <span class="eyebrow" style="color:#ff9ca2">
+          Founder Profile
+        </span>
+
+        <h2 id="santhoshProfileTitle">
+          Santhosh Naik
+        </h2>
+
+        <p>
+          Founder & Chief Executive Officer<br>
+          SVV Visa Consultancy
+        </p>
+      </div>
+    </div>
+
+    <div class="profile-body">
+      <h3>About Santhosh Naik</h3>
+
+      <p>
+        Santhosh Naik is the Founder and Chief Executive Officer of
+        SVV Visa Consultancy. He founded the company with a clear mission:
+        to provide students and families with honest, transparent and
+        dependable guidance for international education.
+      </p>
+
+      <p style="margin-top:14px">
+        With more than five years of experience in overseas education
+        consultancy, he has developed practical knowledge in student profile
+        evaluation, country and university selection, admission applications,
+        documentation, visa preparation and pre-departure assistance.
+      </p>
+
+      <div class="profile-highlights">
+        <div class="profile-highlight">
+          <strong>5+ Years</strong>
+          <span>Overseas education consultancy experience</span>
+        </div>
+
+        <div class="profile-highlight">
+          <strong>Europe Focus</strong>
+          <span>Admission and visa guidance across European destinations</span>
+        </div>
+
+        <div class="profile-highlight">
+          <strong>Trusted Support</strong>
+          <span>Student-focused guidance from enquiry to departure</span>
+        </div>
+      </div>
+
+      <h3>His Leadership Journey</h3>
+
+      <p>
+        Santhosh Naik built SVV Visa Consultancy by understanding the real
+        challenges students face while planning to study abroad. His approach
+        focuses on explaining every stage clearly, reviewing each student’s
+        profile carefully and helping applicants make informed decisions based
+        on their education, career goals and budget.
+      </p>
+
+      <p style="margin-top:14px">
+        Under his leadership, the consultancy has continued to strengthen its
+        student support services and expand its guidance for European study
+        destinations. His goal is not only to complete an application, but to
+        help every student begin their international education journey with
+        confidence and proper preparation.
+      </p>
+
+      <h3>Experience and Expertise</h3>
+
+      <p>
+        His areas of expertise include student profile assessment, course and
+        university shortlisting, admission guidance, documentation review,
+        student visa assistance, accommodation guidance and pre-departure
+        preparation.
+      </p>
+
+      <h3>Success and Commitment</h3>
+
+      <p>
+        Through consistent guidance, careful documentation support and
+        student-focused service, Santhosh Naik has built a strong admission
+        and visa assistance track record. SVV Visa Consultancy remains
+        committed to providing responsible support while recognizing that
+        final admission and visa decisions are made by the respective
+        institutions and government authorities.
+      </p>
+
+      <div class="profile-quote">
+        “Our purpose is to give every student honest guidance, clear
+        information and dependable support throughout their study-abroad
+        journey.”
+      </div>
+    </div>
+  </article>
+</div>
   <div class="floating">
    <a class="wa" href="https://wa.me/918019287095" rel="noopener" target="_blank">
     ◉
@@ -1337,30 +1623,39 @@ const people = [
     initial: "S",
     name: "Santhosh Naik",
     role: "Founder & CEO",
-    image: "assets/team/santhosh-naik.jpeg"
+    image: "assets/team/santhosh-naik.jpeg",
+    profile: "santhosh"
   },
   {
     initial: "J",
     name: "Jatavath Sindhu",
     role: "Co-Founder",
-    image: "assets/team/jatavath-sindhu.jpeg"
+    image: "assets/team/jatavath-sindhu.jpeg",
+    profile: ""
   },
   {
     initial: "L",
     name: "Latha Katika",
     role: "Vizag Branch Manager",
-    image: "assets/team/latha-katika.jpeg"
+    image: "assets/team/latha-katika.jpeg",
+    profile: ""
   },
   {
     initial: "S",
     name: "Sathish",
     role: "Legal Advisor",
-    image: "assets/team/sathish.jpeg"
+    image: "assets/team/sathish.jpeg",
+    profile: ""
   }
 ];
 
 const cards = people.map(person => `
-  <article class="person">
+  <article
+    class="person ${person.profile ? "person-clickable" : ""}"
+    ${person.profile ? `data-profile="${person.profile}"` : ""}
+    ${person.profile ? 'role="button" tabindex="0"' : ""}
+    ${person.profile ? `aria-label="View biography of ${person.name}"` : ""}
+  >
     ${
       person.image
         ? `
@@ -1371,9 +1666,15 @@ const cards = people.map(person => `
             loading="lazy"
             onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
           >
-          <span class="avatar avatar-fallback">${person.initial}</span>
+          <span class="avatar avatar-fallback">
+            ${person.initial}
+          </span>
         `
-        : `<span class="avatar">${person.initial}</span>`
+        : `
+          <span class="avatar">
+            ${person.initial}
+          </span>
+        `
     }
 
     <div>
@@ -1384,6 +1685,51 @@ const cards = people.map(person => `
 `).join("");
 
 document.getElementById("teamTrack").innerHTML = cards + cards;
+    const santhoshModal = document.getElementById("santhoshProfileModal");
+const closeSanthoshProfile = document.getElementById("closeSanthoshProfile");
+const teamTrack = document.getElementById("teamTrack");
+
+function openSanthoshProfile() {
+  santhoshModal.classList.add("open");
+  document.body.classList.add("modal-open");
+  closeSanthoshProfile.focus();
+}
+
+function closeFounderProfile() {
+  santhoshModal.classList.remove("open");
+  document.body.classList.remove("modal-open");
+}
+
+teamTrack.addEventListener("click", event => {
+  const card = event.target.closest('[data-profile="santhosh"]');
+
+  if (card) {
+    openSanthoshProfile();
+  }
+});
+
+teamTrack.addEventListener("keydown", event => {
+  const card = event.target.closest('[data-profile="santhosh"]');
+
+  if (card && (event.key === "Enter" || event.key === " ")) {
+    event.preventDefault();
+    openSanthoshProfile();
+  }
+});
+
+closeSanthoshProfile.addEventListener("click", closeFounderProfile);
+
+santhoshModal.addEventListener("click", event => {
+  if (event.target === santhoshModal) {
+    closeFounderProfile();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && santhoshModal.classList.contains("open")) {
+    closeFounderProfile();
+  }
+});
   document.getElementById("form").onsubmit=e=> {
     e.preventDefault();
     const n=document.getElementById("name").value.trim(),m=document.getElementById("mobile").value.replace(/\D/g,""),q=document.getElementById("qualification").value,c=select.value,co=document.getElementById("course").value.trim(),i=document.getElementById("intake").value.trim(),no=document.getElementById("note").value.trim(),msg=document.getElementById("message");
